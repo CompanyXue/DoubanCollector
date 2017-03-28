@@ -1,6 +1,7 @@
 '''
 main source file for this spider program.
 '''
+
 def main():
     print('This is a douban spider.')
 
