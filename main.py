@@ -11,8 +11,7 @@ from bs4 import BeautifulSoup
 
 
 def save2file(stry,filename):
-    try:
-        #filename = "books"   
+    try:  
         f = open(filename,'w+')
         f.write(stry.encode("utf8"))
     except IOError as err:
