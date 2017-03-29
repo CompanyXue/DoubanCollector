@@ -7,7 +7,6 @@ main source file for this spider program.
 import sys
 import string
 from urllib2 import urlopen
-
 from bs4 import BeautifulSoup 
 
 
@@ -16,12 +15,12 @@ def save2file(stry,filename):
         f = open(filename,'w+')
         f.write(stry.encode("utf8"))
     except IOError as err:
-        print 'File error :'+str(err)   
+        print 'File error :' + str(err)
     finally: 
         f.close()
     pass
 
-	
+
 def main():
     #This is request content for writing into file.
     reqForbook = "This is douban book spider.\n"
@@ -48,17 +47,14 @@ def main():
             html3 = urlopen(id3).read()
             soup2 = BeautifulSoup(html3)
             for table in soup2.findAll('table'):
-                reqFormusic = reqFormusic + str(table)+'\n\n'
-                
-        save2file(reqForbook,"books") 
-        save2file(reqFormovie,"movies")  
+                reqFormusic = reqFormusic + str(table) + '\n\n'
+
+        save2file(reqForbook, "books") 
+        save2file(reqFormovie, "movies")  
         save2file(reqFormusic, "musics")       
         
         sys.exit()        
     except Exception as e:
-        print 'File error :'+str(e)  
+        print 'File error :' + str(e)  
     finally:
         urls.close()
-    
-
-
