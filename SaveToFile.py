@@ -30,7 +30,7 @@ def getImg(html,path,count):
     '''
         这个方法是用于下载图片的，实验成功
     '''
-    reg = r'img src="(.+?\.jpg)" width="64"'
+    reg = r'img src="(.+?\.jpg)" '
     imgre = re.compile(reg)
     imglist = re.findall(imgre,html)
    
