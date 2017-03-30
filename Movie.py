@@ -41,8 +41,10 @@ def get_movie_list():
         soup = BeautifulSoup(html)
         for li in soup.findAll('div', class_='info'):
             result = get_movie_one(li)
-            reqFormovie = reqFormovie + '电影名：'+str(result[0])+str(result[1])+str(result[2])+str(result[3])\
-               +'播放状态：'+str(result[4]) +'介绍：'++str(result[5])+str(result[6])+'评分：'+str(result[7])+str(result[8])+'\n\n'
+#             for i in range(4):
+#                 print i,result[i]
+                    
+            reqFormovie = reqFormovie + '电影名：'+str(result[0])+'别名：'+str(result[1])+'播放状态：'+str(result[2]) +'介绍：'+str(result[3])+'\n\n'
             
     save2file(reqFormovie, 'movies.txt')       
     #写入文件之后会显示为全部u编码--不正常
