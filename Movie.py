@@ -8,6 +8,8 @@ from urllib2 import urlopen
 
 from bs4 import BeautifulSoup
 
+from DoubanCollector.SaveToFile import save2file
+
 
 def get_movie_one(movie):
     result = []
@@ -32,14 +34,16 @@ def get_movie_one(movie):
 
 def get_movie_list():
     reqFormovie = "This is douban movie spider.\n"
+    
     for i in range(0,250,25):
         url = "https://movie.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
         for li in soup.findAll('div', class_='info'):
-            print li
-            get_movie_one(li)
-            reqFormovie = reqFormovie + str(li)+'\n\n'
+            result = get_movie_one(li)
+            reqFormovie = reqFormovie + '电影名：'+str(result[0])+str(result[1])+str(result[2])+str(result[3])\
+               +'播放状态：'+str(result[4]) +'介绍：'++str(result[5])+str(result[6])+'评分：'+str(result[7])+str(result[8])+'\n\n'
             
-    #save2file(reqFormovie, "movies.txt")       
+    save2file(reqFormovie, 'movies.txt')       
+    #写入文件之后会显示为全部u编码--不正常
 
