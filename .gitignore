@@ -3,4 +3,5 @@
 *.pyc
 *.txt
 *.csv
-*.jpg
+
+bookImg/
