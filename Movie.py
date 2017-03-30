@@ -39,6 +39,7 @@ def get_movie_list():
         url = "https://movie.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
+        
         for li in soup.findAll('div', class_='info'):
             result = get_movie_one(li)
             # 解決不同列表不同大小的問題-- 統一截取為6項信息
