@@ -6,10 +6,9 @@ Created on 2017年3月30日
 '''
 
 from urllib2 import urlopen
-
 from bs4 import BeautifulSoup 
 
-from DoubanCollector.SaveToFile import save2file
+from DoubanCollector.SaveToFile import *
 
 
 def get_books_list():
@@ -19,6 +18,7 @@ def get_books_list():
         url = "https://book.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
+        getImg(html,"bookImg",i)
         for table in soup.findAll('tr',class_= 'item'):
             print table
             reqForbook = reqForbook + str(table)+'\n\n'

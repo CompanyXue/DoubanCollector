@@ -1,8 +1,6 @@
 .idea/
 
 *.pyc
-
-books
-movies
-music
-output/
+*.txt
+*.csv
+*.jpg
