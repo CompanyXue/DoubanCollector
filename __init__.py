@@ -8,6 +8,5 @@ Created on 2017年3月28日
 
 from main import main
 
-
 if __name__ == '__main__':
     main()
