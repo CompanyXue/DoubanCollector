@@ -70,4 +70,4 @@ def get_books_list():
             reqForbook = reqForbook + '书名：'+str(result[0])+'\t介绍：'+str(result[1])+'\t评分:'+\
                 str(result[2])+str(result[3])+'\t总结: '+str(result[4])+'\n\n'
             
-    save2file(reqForbook, 'books.csv')       
+    save2file(reqForbook, 'books.txt')       
