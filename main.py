@@ -4,12 +4,12 @@
 main source file for this spider program.
 '''
 
-import sys
 import string
+import sys
 from urllib2 import urlopen
 from bs4 import BeautifulSoup 
+from DoubanCollector.Movies import get_movie_list
 
-from movies import get_movie_list
 
 def save2file(stry,filename):
     try:  

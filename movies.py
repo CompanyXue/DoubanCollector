@@ -8,8 +8,6 @@ from urllib2 import urlopen
 
 from bs4 import BeautifulSoup
 
-from DoubanCollector.main import save2file
-
 
 def get_movie_one(movie):
     result = []
@@ -22,10 +20,14 @@ def get_movie_one(movie):
     num = soup_all.find_all('span', class_='title')
     print num[0].contents[0]
     
+    result_str = ""
     info = soup_all.find_all('div', class_='bd')
     soup_info = BeautifulSoup(str(info[0]))
     for line in soup_info.stripped_strings:  # 对获取到的<a>里的内容进行提取
         print line
+        result_str = result_str + line
+    result.append(result_str)
+    return result  #返回获取到的结果
 
 
 def get_movie_list():
@@ -39,4 +41,5 @@ def get_movie_list():
             get_movie_one(li)
             reqFormovie = reqFormovie + str(li)+'\n\n'
             
-    save2file(reqFormovie, "movies.txt")       
+    #save2file(reqFormovie, "movies.txt")       
+
