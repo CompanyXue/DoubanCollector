@@ -15,8 +15,8 @@ def main():
     
     print("This is douban spider.\n")
     
-    #get_books_list()
-    #get_music_list()    
+    get_books_list()
+    get_music_list()    
     get_movie_list()
     
     sys.exit()        
