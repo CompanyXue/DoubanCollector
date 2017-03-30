@@ -35,9 +35,13 @@ def main():
             soup = BeautifulSoup(html, "html.parser")
 
             for table in soup.findAll('table'):
-                print table
-                reqForbook = reqForbook + str(table) + '\n\n'
+                #print table
+                #title = table.find('a', {'title'})
+                print table.children
+                #reqForbook = reqForbook + str(table) + '\n\n'
+                #reqForbook = reqForbook + str(title) + '\n\n'
 
+            '''
             id2 = string.replace(id, "book", "movie")
             html2 = urlopen(id2).read()
             soup2 = BeautifulSoup(html2)
@@ -50,7 +54,7 @@ def main():
             soup2 = BeautifulSoup(html3)
             for table in soup2.findAll('table'):
                 reqFormusic = reqFormusic + str(table) + '\n\n'
-
+            '''
         save2file(reqForbook, "books")
         # save2file(reqFormovie, "movies")
         # save2file(reqFormusic, "musics")
