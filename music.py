@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+
 '''
 Created on 2017年3月30日
 
@@ -8,7 +9,7 @@ Created on 2017年3月30日
 from urllib2 import urlopen
 from bs4 import BeautifulSoup
 
-from DoubanCollector.SaveToFile import save2file, getImg
+from save_to_file import save2file, getImg
 
 
 def get_music_one(music):
@@ -37,21 +38,22 @@ def get_music_one(music):
 
 
 def get_music_list():
-    reqFormusic = "This is douban music spider.\n"
+    req_for_music = "This is douban music spider.\n"
     
     for i in range(0,250,25):
         url = "https://music.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
-        getImg(html,"musicImg",i)
+#         getImg(html,"musicImg",i)
         for table in soup.findAll('tr',class_= 'item'):
+
             result = get_music_one(table)
             for id in range(3):
                 print id , result[id]  
 #                    
-            reqFormusic = reqFormusic + 'music name：'+str(result[0])+'\t评分:'+\
+            req_for_music = req_for_music + 'music name：'+str(result[0])+'\t评分:'+\
                 str(result[1])+str(result[2])+'\n\n'
                 
-    save2file(reqFormusic, 'musics.txt')     
+    save2file(req_for_music, 'musics.txt')     
     
     

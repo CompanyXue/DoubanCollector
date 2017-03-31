@@ -33,7 +33,7 @@ def getImg(html,path,count):
     reg = r'img src="(.+?\.jpg)" '
     imgre = re.compile(reg)
     imglist = re.findall(imgre,html)
-   
+    
     for imgurl in imglist:
         urllib.urlretrieve(imgurl,path+'/%s.jpg' % count)
         print count,imgurl

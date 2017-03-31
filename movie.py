@@ -1,13 +1,15 @@
 #-*- coding:utf-8 -*-
+
 '''
 Created on 2017年3月30日
 
 @author: stone
 '''
+
 from urllib2 import urlopen
 from bs4 import BeautifulSoup
 
-from DoubanCollector.SaveToFile import save2file
+from save_to_file import save2file
 
 
 def get_movie_one(movie):
@@ -33,7 +35,7 @@ def get_movie_one(movie):
 
 
 def get_movie_list():
-    reqFormovie = "This is douban movie spider.\n"
+    req_for_movie = "This is douban movie spider.\n"
     
     for i in range(0,250,25):
         url = "https://movie.douban.com/top250?start=" + str(i)
@@ -46,8 +48,8 @@ def get_movie_list():
             if len(result)<6:
                 result.append(" no conclusion!")    
                 
-            reqFormovie = reqFormovie + '电影名：'+str(result[0])+'\t'+str(result[1])+'\t'+str(result[2]) +\
+            req_for_movie = req_for_movie + '电影名：'+str(result[0])+'\t'+str(result[1])+'\t'+str(result[2]) +\
                '\t 评分：'+ str(result[3])+'\t'+str(result[4])+'\t 总结：'+str(result[5])+'\n\n'
             
-    save2file(reqFormovie, 'movies.csv')       
+    save2file(req_for_movie, 'movies.csv')
 

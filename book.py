@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+
 '''
 Created on 2017年3月30日
 
@@ -9,7 +10,7 @@ import string
 from urllib2 import urlopen
 from bs4 import BeautifulSoup 
 
-from DoubanCollector.SaveToFile import *
+from save_to_file import *
 
 
 def get_book_one(book):
@@ -55,19 +56,19 @@ def get_book_one(book):
     return result
 
 def get_books_list():
-    reqForbook = "This is douban book spider.\n"
+    req_for_book = "This is douban book spider.\n"
     
     for i in range(0,250,25):
         url = "https://book.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
-        soup = BeautifulSoup(html)
-        getImg(html,"bookImg",i)
+        soup = BeautifulSoup(html, "html.parser")
+#         getImg(html,"bookImg",i)
         for table in soup.findAll('tr',class_= 'item'):
             result = get_book_one(table)
             for id in range(5):
                 print id , result[id]  
                    
-            reqForbook = reqForbook + '书名：'+str(result[0])+'\t介绍：'+str(result[1])+'\t评分:'+\
+            req_for_book = req_for_book + '书名：'+str(result[0])+'\t介绍：'+str(result[1])+'\t评分:'+\
                 str(result[2])+str(result[3])+'\t总结: '+str(result[4])+'\n\n'
-            
-    save2file(reqForbook, 'books.txt')       
+
+    save2file(req_for_book, 'books.txt')
