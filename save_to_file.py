@@ -10,7 +10,6 @@ import re
 import urllib
 import os
 
-
 def save2file(stry, filename):
     '''
         这个方法是用于保存文件的
@@ -43,6 +42,18 @@ def getImg(html, path, count):
     imglist = re.findall(imgre, html)
 
     for imgurl in imglist:
-        urllib.urlretrieve(imgurl, path + '/%s.jpg' % count)
-        print count, imgurl
+        urllib.urlretrieve(imgurl,path+'/%s.jpg' % count)
+        print count,imgurl
         count += 1
+        
+def set_image_download(path):   
+    if not os.path.exists(path):
+        os.makedirs(path)
+    fname = path+'/downloaded'
+    if not os.path.isfile(fname):
+        try:  
+            f = open(fname, 'r')
+        except IOError as err:
+            print 'File error :' + str(err)
+        finally: 
+            f.close()
