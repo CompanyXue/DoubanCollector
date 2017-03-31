@@ -37,7 +37,7 @@ def getImg(html, path, count):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    reg = r'img src="(.+?\.jpg)" width="64"'
+    reg = r'img src="(.+?\.jpg)" '
     imgre = re.compile(reg)
     imglist = re.findall(imgre, html)
 
@@ -47,13 +47,17 @@ def getImg(html, path, count):
         count += 1
         
 def set_image_download(path):   
+
     if not os.path.exists(path):
         os.makedirs(path)
-    fname = path+'/downloaded'
-    if not os.path.isfile(fname):
+    
+    fname =path+'/downloaded'
+  
+    if not os.path.exists(fname):
         try:  
-            f = open(fname, 'r')
+            des = open(fname, 'w+')
+
         except IOError as err:
             print 'File error :' + str(err)
         finally: 
-            f.close()
+            des.close()

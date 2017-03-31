@@ -61,10 +61,10 @@ def get_books_list():
 
     for i in range(0, 250, 25):
         url = "https://book.douban.com/top250?start=" + str(i)
-        html = urlopen(url).read()
+        html = urlopen(url).read().encode('utf-8')
         soup = BeautifulSoup(html, "html.parser")
         path = 'book_images'
-        
+    
         if not os.path.isfile(path+'/downloaded') :
             getImg(html,path,i)
 
@@ -72,7 +72,7 @@ def get_books_list():
             result = get_book_one(table)
             for id in range(5):
                 print id, result[id]
-
+                
             req_for_book = req_for_book + '书名：' + str(result[0]) + '\t介绍：' + str(result[1]) + '\t评分:' + \
                            str(result[2]) + str(result[3]) + '\t总结: ' + str(result[4]) + '\n\n'
 

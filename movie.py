@@ -41,7 +41,7 @@ def get_movie_list():
 
     for i in range(0, 250, 25):
         url = "https://movie.douban.com/top250?start=" + str(i)
-        html = urlopen(url).read()
+        html = urlopen(url).read().encode('utf-8')
         soup = BeautifulSoup(html, "html.parser")
 
         for li in soup.findAll('div', class_='info'):
@@ -55,7 +55,7 @@ def get_movie_list():
 
             movie_list.append([result[0], result[1], result[2], result[3], result[4], result[5]])
 
-    save2file(req_for_movie, 'movies.csv')
+    save2file(req_for_movie, 'movies.txt')
 
     print_movie_list_excel(movie_list)
     #　0 name 1 intro 2 type 3 ratio 4 ration_num 5 summary
