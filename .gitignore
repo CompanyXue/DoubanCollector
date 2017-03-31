@@ -1,12 +1,10 @@
 .idea/
 
 book_images/
+movie_images/
+music_images/
 
 *.pyc
 *.txt
 *.csv
 *.xlsx
-
-bookImg/
-movieImg/
-musicImg/
