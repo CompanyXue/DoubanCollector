@@ -1,2 +1,2 @@
 clean:
-	@-rm -rf *.pyc *.xlsx *.txt
+	@-rm -rf *.pyc *.xlsx *.txt 
