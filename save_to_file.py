@@ -34,7 +34,6 @@ def getImg(html, path, count):
     '''
         这个方法是用于下载图片的，实验成功
     '''
-
     # 自动创建目录
     if not os.path.exists(path):
         os.makedirs(path)
