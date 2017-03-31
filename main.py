@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 '''
 main source file for this spider program.
@@ -13,8 +13,7 @@ from music import get_music_list
 
 def main():
     get_books_list()
-    get_music_list()    
+    get_music_list()
     get_movie_list()
-    
-    sys.exit()        
-    
+
+    sys.exit()

@@ -1,14 +1,17 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
+
 '''
 Created on 2017年3月30日
 
 @author: stone
 '''
+
 import re
 import urllib
+import os
 
 
-def save2file(stry,filename):
+def save2file(stry, filename):
     '''
         这个方法是用于保存文件的
     Input
@@ -17,24 +20,30 @@ def save2file(stry,filename):
     Output：
         one file
     '''
-    try:  
-        f = open(filename,'w+')
+    try:
+        f = open(filename, 'w+')
         f.write(stry.encode("utf-8"))
     except IOError as err:
         print 'File error :' + str(err)
-    finally: 
+    finally:
         f.close()
     pass
 
-def getImg(html,path,count):
+
+def getImg(html, path, count):
     '''
         这个方法是用于下载图片的，实验成功
     '''
+
+    # 自动创建目录
+    if not os.path.exists(path):
+        os.makedirs(path)
+
     reg = r'img src="(.+?\.jpg)" width="64"'
     imgre = re.compile(reg)
-    imglist = re.findall(imgre,html)
-   
+    imglist = re.findall(imgre, html)
+
     for imgurl in imglist:
-        urllib.urlretrieve(imgurl,path+'/%s.jpg' % count)
-        print count,imgurl
+        urllib.urlretrieve(imgurl, path + '/%s.jpg' % count)
+        print count, imgurl
         count += 1
