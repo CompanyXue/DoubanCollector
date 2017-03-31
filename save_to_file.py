@@ -6,6 +6,8 @@ Created on 2017年3月30日
 '''
 import re
 import urllib
+import os
+from warnings import catch_warnings
 
 
 def save2file(stry,filename):
@@ -38,3 +40,13 @@ def getImg(html,path,count):
         urllib.urlretrieve(imgurl,path+'/%s.jpg' % count)
         print count,imgurl
         count += 1
+        
+def set_image_download(path):   
+    fname = path+'/downloaded'
+    if not os.path.isfile(fname):
+        try:  
+            f = open(fname, 'r')
+        except IOError as err:
+            print 'File error :' + str(err)
+        finally: 
+            f.close()

@@ -9,7 +9,7 @@ Created on 2017年3月30日
 from urllib2 import urlopen
 from bs4 import BeautifulSoup
 
-from save_to_file import save2file, getImg
+from save_to_file import *
 
 
 def get_music_one(music):
@@ -44,7 +44,12 @@ def get_music_list():
         url = "https://music.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
-#         getImg(html,"musicImg",i)
+        
+        path = 'music_images'
+         
+        if not os.path.isfile(path+'/downloaded') :
+            getImg(html,path,i)
+    
         for table in soup.findAll('tr',class_= 'item'):
 
             result = get_music_one(table)
@@ -54,6 +59,7 @@ def get_music_list():
             req_for_music = req_for_music + 'music name：'+str(result[0])+'\t评分:'+\
                 str(result[1])+str(result[2])+'\n\n'
                 
+    set_image_download(path)
     save2file(req_for_music, 'musics.txt')     
     
     
