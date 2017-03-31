@@ -8,3 +8,5 @@ music_images/
 *.txt
 *.csv
 *.xlsx
+
+__pycache__/
