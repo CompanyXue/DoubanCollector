@@ -1,7 +1,11 @@
 .idea/
+
+book_images/
+
 *.pyc
 *.txt
 *.csv
+*.xlsx
 
 bookImg/
 movieImg/

@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 '''
 Created on 2017年3月30日
@@ -39,8 +39,8 @@ def get_music_one(music):
 
 def get_music_list():
     req_for_music = "This is douban music spider.\n"
-    
-    for i in range(0,250,25):
+
+    for i in range(0, 250, 25):
         url = "https://music.douban.com/top250?start=" + str(i)
         html = urlopen(url).read()
         soup = BeautifulSoup(html)
