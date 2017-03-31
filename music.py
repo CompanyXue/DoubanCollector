@@ -42,20 +42,19 @@ def get_music_list():
 
     for i in range(0, 250, 25):
         url = "https://music.douban.com/top250?start=" + str(i)
-        html = urlopen(url).read()
+        html = urlopen(url).read().encode('utf-8')
         soup = BeautifulSoup(html)
         
         path = 'music_images'
-         
+        
         if not os.path.isfile(path+'/downloaded') :
             getImg(html,path,i)
     
         for table in soup.findAll('tr',class_= 'item'):
-
             result = get_music_one(table)
             for id in range(3):
                 print id , result[id]  
-#                    
+                    
             req_for_music = req_for_music + 'music name：'+str(result[0])+'\t评分:'+\
                 str(result[1])+str(result[2])+'\n\n'
                 
