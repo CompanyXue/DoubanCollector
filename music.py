@@ -22,7 +22,9 @@ def get_music_one(music):
     aa = soup_title.find_all('a')
 #     print "title: ",soup_title,a
     soup_a = BeautifulSoup(str(aa))
+    
     for line in soup_a.stripped_strings:  
+        line = line.replace("\n", "  ")
         print line
         title_str = title_str +line
         
@@ -30,8 +32,10 @@ def get_music_one(music):
     
     info = soup_all.find_all('div', class_='star clearfix')
     soup_info = BeautifulSoup(str(info[0]))
+    p=re.compile('\s+')
     for line in soup_info.stripped_strings: # 評分：星
         print line
+        line = re.sub(p,'',line)
         result.append(line)
     
     return result

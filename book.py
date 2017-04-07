@@ -7,6 +7,7 @@ Created on 2017年3月30日
 '''
 
 import string
+import re
 from urllib2 import urlopen
 from bs4 import BeautifulSoup 
 
@@ -39,10 +40,14 @@ def get_book_one(book):
     assessment = soup_all.find_all('span', class_="pl")  # 评价
     temp = BeautifulSoup(str(assessment[0]))
     asses = str(temp.get_text())
-    # TODO 去除换行和空格
-    string.strip(asses)
-    #     asses.replace('\r\n', 'A')
-    result.append(asses)
+
+    # 正则：去除换行和空格
+    p=re.compile('\s+')
+    asses = re.sub(p,'',asses)
+    # 字符串替换 来实现
+    # asses = asses.replace("\n", "").replace(' ','')
+
+    result.append(asses.strip())
 
     summary = soup_all.find_all('span', class_="inq")  # summary 总结
     print "sum :", summary
